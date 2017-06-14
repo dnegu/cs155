@@ -14,10 +14,10 @@ cookie = mech_agent.cookie_jar.jar['localhost']['/'][SESSION].to_s.sub("#{SESSIO
 cook_val, cookie_signature = cookie.split('--')
 raw_session = Base64.decode64(cook_val)
 session = Marshal.load(raw_session)
-fail unless raw_session == Marshal.dump(session) # sanity check
+fail unless raw_session == Marshal.dump(session)
 
 session['logged_in_id'] = 1
-cook_val = Base64.encode64(Marshal.dump(session)).split.join # get rid of newlines
+cook_val = Base64.encode64(Marshal.dump(session)).split.join
 cookie_signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::SHA1.new, RAILS_SECRET, cook_val)
 cookie_full = "#{SESSION}=#{cook_val}--#{cookie_signature}"
 
